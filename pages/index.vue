@@ -58,6 +58,11 @@
             <h4 class="text-thin">{{ daily.prayerTime[0].isha }}</h4>
           </div>
         </div>
+        <div class="flex justify-center mt-6">
+          <h3 class="text-3xl" v-for="location in daily.locations">
+            <span class="mr-5"> {{ location.location }} </span>
+          </h3>
+        </div>
         <div class="flex justify-center">
           <libraryButtonNuxt value="Bulanan" to='/monthly' class="m-2" />
         </div>
@@ -69,5 +74,7 @@
 </template>
 
 <script setup>
-const { pending, data: daily } = useLazyFetch('https://solat.my/api/daily/sgr01')
+const zone = useCookie('zone')
+zone.value ||= 'sgr01'
+const { pending, data: daily } = useLazyFetch(`https://solat.my/api/daily/${zone.value}`)
 </script>

@@ -16,7 +16,8 @@
                 <div class="min-w-0 flex-auto">
                   <p class="text-sm font-semibold leading-6 ">
 
-                    <NuxtLink to="/"> {{ location.code }} - {{ location.location }} </NuxtLink>
+                    <NuxtLink to="/" @click="zone = location.code"> {{ location.code }} - {{ location.location }}
+                    </NuxtLink>
                   </p>
                 </div>
               </div>
@@ -31,6 +32,8 @@
 </template>
 
 <script setup>
+const zone = useCookie('zone')
+zone.value ||= 'sgr01'
 const { pending, data: states } = useFetch('https://solat.my/api/locations', {
   onResponse({ request, response, options }) {
 
