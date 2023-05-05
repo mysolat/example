@@ -8,13 +8,17 @@
         <h4> Loading ... </h4>
       </div>
       <div class="w-full" v-else>
-        <!-- <div class="text-center">
-            <h1 class="text-thin">{{ zone }} {{ location }}</h1>
-          </div>
-        -->
-        <div class="flex justify-between">
+        <div class="text-center">
+
+        </div>
+
+        <div class=" flex justify-between">
           <h3 class="text-4xl">{{ daily.prayerTime[0].date }}</h3>
-          <h3 class="text-4xl">{{ daily.prayerTime[0].hijri }}</h3>4
+          <h3 class="text-4xl">
+            <span class="mr-5"> {{ daily.zone }}</span>
+            <span v-html="daily.bearing"></span>
+          </h3>
+          <h3 class="text-4xl">{{ daily.prayerTime[0].hijri }}</h3>
         </div>
         <br>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7">
